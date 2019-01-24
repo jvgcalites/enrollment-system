@@ -17,3 +17,4 @@ C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSy
 C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csproj.CoreCompileInputs.cache
 C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.exe
 C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.pdb
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.Login.resources

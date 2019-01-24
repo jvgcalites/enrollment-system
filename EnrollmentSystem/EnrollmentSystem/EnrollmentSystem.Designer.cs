@@ -29,19 +29,22 @@
 		private void InitializeComponent()
 		{
 			this.lv_load = new System.Windows.Forms.ListView();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.lbl_studName = new System.Windows.Forms.Label();
 			this.colCourseCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.colCourseTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.colUnit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colSection = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colRemove = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btn_removeSection = new System.Windows.Forms.Button();
+			this.btn_removeCourse = new System.Windows.Forms.Button();
+			this.lbl_studName = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.btn_addCourse = new System.Windows.Forms.Button();
 			this.lv_course = new System.Windows.Forms.ListView();
 			this.col_CourseCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_CourseTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_Unit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.col_CourseId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.btn_removeCourse = new System.Windows.Forms.Button();
-			this.btn_addCourse = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.lv_sched = new System.Windows.Forms.ListView();
 			this.colTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,8 +55,6 @@
 			this.colFri = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.colSat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.colSun = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.colSection = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.colRemove = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.btn_addSection = new System.Windows.Forms.Button();
 			this.lv_section = new System.Windows.Forms.ListView();
@@ -62,7 +63,6 @@
 			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.btn_removeSection = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -85,27 +85,6 @@
 			this.lv_load.UseCompatibleStateImageBehavior = false;
 			this.lv_load.View = System.Windows.Forms.View.Details;
 			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.btn_removeSection);
-			this.groupBox1.Controls.Add(this.btn_removeCourse);
-			this.groupBox1.Controls.Add(this.lv_load);
-			this.groupBox1.Location = new System.Drawing.Point(442, 57);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(484, 304);
-			this.groupBox1.TabIndex = 2;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Current Load";
-			// 
-			// lbl_studName
-			// 
-			this.lbl_studName.AutoSize = true;
-			this.lbl_studName.Location = new System.Drawing.Point(12, 9);
-			this.lbl_studName.Name = "lbl_studName";
-			this.lbl_studName.Size = new System.Drawing.Size(55, 13);
-			this.lbl_studName.TabIndex = 0;
-			this.lbl_studName.Text = "Welcome ";
-			// 
 			// colCourseCode
 			// 
 			this.colCourseCode.Text = "CourseCode";
@@ -121,6 +100,55 @@
 			this.colUnit.Text = "Unit";
 			this.colUnit.Width = 45;
 			// 
+			// colSection
+			// 
+			this.colSection.Text = "Section";
+			this.colSection.Width = 58;
+			// 
+			// colRemove
+			// 
+			this.colRemove.Text = "Remove";
+			this.colRemove.Width = 98;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.btn_removeSection);
+			this.groupBox1.Controls.Add(this.btn_removeCourse);
+			this.groupBox1.Controls.Add(this.lv_load);
+			this.groupBox1.Location = new System.Drawing.Point(442, 57);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(484, 304);
+			this.groupBox1.TabIndex = 2;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Current Load";
+			// 
+			// btn_removeSection
+			// 
+			this.btn_removeSection.Location = new System.Drawing.Point(370, 263);
+			this.btn_removeSection.Name = "btn_removeSection";
+			this.btn_removeSection.Size = new System.Drawing.Size(99, 23);
+			this.btn_removeSection.TabIndex = 5;
+			this.btn_removeSection.Text = "Remove Section";
+			this.btn_removeSection.UseVisualStyleBackColor = true;
+			// 
+			// btn_removeCourse
+			// 
+			this.btn_removeCourse.Location = new System.Drawing.Point(18, 262);
+			this.btn_removeCourse.Name = "btn_removeCourse";
+			this.btn_removeCourse.Size = new System.Drawing.Size(97, 23);
+			this.btn_removeCourse.TabIndex = 4;
+			this.btn_removeCourse.Text = "Remove Course";
+			this.btn_removeCourse.UseVisualStyleBackColor = true;
+			// 
+			// lbl_studName
+			// 
+			this.lbl_studName.AutoSize = true;
+			this.lbl_studName.Location = new System.Drawing.Point(12, 9);
+			this.lbl_studName.Name = "lbl_studName";
+			this.lbl_studName.Size = new System.Drawing.Size(55, 13);
+			this.lbl_studName.TabIndex = 0;
+			this.lbl_studName.Text = "Welcome ";
+			// 
 			// groupBox2
 			// 
 			this.groupBox2.Controls.Add(this.btn_addCourse);
@@ -131,6 +159,15 @@
 			this.groupBox2.TabIndex = 3;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Course";
+			// 
+			// btn_addCourse
+			// 
+			this.btn_addCourse.Location = new System.Drawing.Point(18, 262);
+			this.btn_addCourse.Name = "btn_addCourse";
+			this.btn_addCourse.Size = new System.Drawing.Size(75, 23);
+			this.btn_addCourse.TabIndex = 5;
+			this.btn_addCourse.Text = "Add Course";
+			this.btn_addCourse.UseVisualStyleBackColor = true;
 			// 
 			// lv_course
 			// 
@@ -166,24 +203,6 @@
 			// 
 			this.col_CourseId.Text = "";
 			this.col_CourseId.Width = 0;
-			// 
-			// btn_removeCourse
-			// 
-			this.btn_removeCourse.Location = new System.Drawing.Point(18, 262);
-			this.btn_removeCourse.Name = "btn_removeCourse";
-			this.btn_removeCourse.Size = new System.Drawing.Size(97, 23);
-			this.btn_removeCourse.TabIndex = 4;
-			this.btn_removeCourse.Text = "Remove Course";
-			this.btn_removeCourse.UseVisualStyleBackColor = true;
-			// 
-			// btn_addCourse
-			// 
-			this.btn_addCourse.Location = new System.Drawing.Point(18, 262);
-			this.btn_addCourse.Name = "btn_addCourse";
-			this.btn_addCourse.Size = new System.Drawing.Size(75, 23);
-			this.btn_addCourse.TabIndex = 5;
-			this.btn_addCourse.Text = "Add Course";
-			this.btn_addCourse.UseVisualStyleBackColor = true;
 			// 
 			// groupBox3
 			// 
@@ -246,16 +265,6 @@
 			// 
 			this.colSun.Text = "Sunday";
 			// 
-			// colSection
-			// 
-			this.colSection.Text = "Section";
-			this.colSection.Width = 58;
-			// 
-			// colRemove
-			// 
-			this.colRemove.Text = "Remove";
-			this.colRemove.Width = 98;
-			// 
 			// groupBox4
 			// 
 			this.groupBox4.Controls.Add(this.btn_addSection);
@@ -314,15 +323,6 @@
 			this.columnHeader7.Text = "MaxSlots";
 			this.columnHeader7.Width = 86;
 			// 
-			// btn_removeSection
-			// 
-			this.btn_removeSection.Location = new System.Drawing.Point(370, 263);
-			this.btn_removeSection.Name = "btn_removeSection";
-			this.btn_removeSection.Size = new System.Drawing.Size(99, 23);
-			this.btn_removeSection.TabIndex = 5;
-			this.btn_removeSection.Text = "Remove Section";
-			this.btn_removeSection.UseVisualStyleBackColor = true;
-			// 
 			// EnrollmentSystem
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,6 +334,7 @@
 			this.Controls.Add(this.lbl_studName);
 			this.Controls.Add(this.groupBox1);
 			this.Name = "EnrollmentSystem";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "EnrollmentSystem";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);

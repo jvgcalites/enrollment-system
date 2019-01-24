@@ -7,12 +7,12 @@ namespace EnrollmentSystem
 {
 	public class Section
 	{
-		private int SectionId;
-		private string SectionName;
-		private string Time;
-		private string Day;
-		private int Capacity;
-		private int AvailableSlot;
+		public int SectionId { get; set; }
+		public string SectionName { get; set; }
+		public string Time { get; set; }
+		public string Day { get; set; }
+		public int Capacity { get; set; }
+		public int AvailableSlot { get; set; }
 
 		/// <summary>
 		/// Get Section informations

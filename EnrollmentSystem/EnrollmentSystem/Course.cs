@@ -20,6 +20,12 @@ namespace EnrollmentSystem
 		/// Returns All Information of the course
 		/// </summary>
 		/// <returns></returns>
+		/// 
+
+		public Course()
+		{
+			Section = new Section();
+		}
 		public Course GetCourseInfo()
 		{
 			throw new System.NotImplementedException();

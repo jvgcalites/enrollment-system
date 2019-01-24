@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -7,23 +10,22 @@ namespace EnrollmentSystem
 {
 	public class Student
 	{
-		private int StudentId;
-		private string FirstName;
-		private string MiddleName;
-		private string LastName;
-		private string Program;
-		private string Email;
-		private string Password;
-		private List<Course> CourseLoad;
+		public int StudentId;
+		public string FirstName;
+		public string MiddleName;
+		public string LastName;
+		public string Program;
+		public string Email;
+		public string Password;
+		public List<Course> CourseLoad;
 
-		/// <summary>
-		/// Returns All Information Student have
-		/// </summary>
-		/// <returns></returns>
-		public Student GetStudentInfo()
+
+		public Student()
 		{
-			throw new System.NotImplementedException();
+			CourseLoad = new List<Course>();
 		}
+
+
 		/// <summary>
 		/// Scans CourseLoad, if course exists, course is taken
 		/// </summary>
@@ -53,9 +55,9 @@ namespace EnrollmentSystem
 		/// Gets all Courses student currently have
 		/// </summary>
 		/// <returns></returns>
-		public List<Course> GetCourseLoad()
-		{
-			throw new System.NotImplementedException();
-		}
+		//public List<Course> GetCourseLoad()
+		//{
+		//	throw new System.NotImplementedException();
+		//}
 	}
 }
