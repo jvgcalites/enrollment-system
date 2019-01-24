@@ -36,10 +36,10 @@
 			this.colUnit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.lv_course = new System.Windows.Forms.ListView();
-			this.currCourseCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_CourseCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_CourseTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_Unit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.col_CourseId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btn_removeCourse = new System.Windows.Forms.Button();
 			this.btn_addCourse = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -135,10 +135,10 @@
 			// lv_course
 			// 
 			this.lv_course.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.currCourseCode,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.col_CourseCode,
+            this.col_CourseTitle,
+            this.col_Unit,
+            this.col_CourseId});
 			this.lv_course.GridLines = true;
 			this.lv_course.Location = new System.Drawing.Point(18, 28);
 			this.lv_course.Name = "lv_course";
@@ -147,25 +147,25 @@
 			this.lv_course.UseCompatibleStateImageBehavior = false;
 			this.lv_course.View = System.Windows.Forms.View.Details;
 			// 
-			// currCourseCode
+			// col_CourseCode
 			// 
-			this.currCourseCode.Text = "CourseCode";
-			this.currCourseCode.Width = 75;
+			this.col_CourseCode.Text = "CourseCode";
+			this.col_CourseCode.Width = 75;
 			// 
-			// columnHeader2
+			// col_CourseTitle
 			// 
-			this.columnHeader2.Text = "CourseTitle";
-			this.columnHeader2.Width = 237;
+			this.col_CourseTitle.Text = "CourseTitle";
+			this.col_CourseTitle.Width = 237;
 			// 
-			// columnHeader3
+			// col_Unit
 			// 
-			this.columnHeader3.Text = "Unit";
-			this.columnHeader3.Width = 50;
+			this.col_Unit.Text = "Unit";
+			this.col_Unit.Width = 50;
 			// 
-			// columnHeader4
+			// col_CourseId
 			// 
-			this.columnHeader4.Text = "";
-			this.columnHeader4.Width = 0;
+			this.col_CourseId.Text = "";
+			this.col_CourseId.Width = 0;
 			// 
 			// btn_removeCourse
 			// 
@@ -359,10 +359,10 @@
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Button btn_addCourse;
 		private System.Windows.Forms.ListView lv_course;
-		private System.Windows.Forms.ColumnHeader currCourseCode;
-		private System.Windows.Forms.ColumnHeader columnHeader2;
-		private System.Windows.Forms.ColumnHeader columnHeader3;
-		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.ColumnHeader col_CourseCode;
+		private System.Windows.Forms.ColumnHeader col_CourseTitle;
+		private System.Windows.Forms.ColumnHeader col_Unit;
+		private System.Windows.Forms.ColumnHeader col_CourseId;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.ListView lv_sched;
 		private System.Windows.Forms.ColumnHeader colTime;

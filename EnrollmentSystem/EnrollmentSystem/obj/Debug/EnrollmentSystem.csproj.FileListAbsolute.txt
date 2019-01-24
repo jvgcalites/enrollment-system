@@ -7,3 +7,13 @@ C:\Users\calites\source\repos\FinalVersion\EnrollmentSystem\EnrollmentSystem\obj
 C:\Users\calites\source\repos\FinalVersion\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csproj.CoreCompileInputs.cache
 C:\Users\calites\source\repos\FinalVersion\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.exe
 C:\Users\calites\source\repos\FinalVersion\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.pdb
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\bin\Debug\EnrollmentSystem.exe.config
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\bin\Debug\EnrollmentSystem.exe
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\bin\Debug\EnrollmentSystem.pdb
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csprojAssemblyReference.cache
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.EnrollmentSystem.resources
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.Properties.Resources.resources
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csproj.GenerateResource.cache
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csproj.CoreCompileInputs.cache
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.exe
+C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.pdb
