@@ -18,11 +18,13 @@ namespace EnrollmentSystem
 		public string Email;
 		public string Password;
 		public List<Course> CourseLoad;
+		public List<Course> CoursePassed;
 
 
 		public Student()
 		{
 			CourseLoad = new List<Course>();
+			CoursePassed = new List<Course>();
 		}
 
 

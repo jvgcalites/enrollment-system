@@ -91,6 +91,7 @@ namespace EnrollmentSystem
 
 		public List<Course> GetStudentLoad()
 		{
+			List<Course> courseLoad = new List<Course>();
 			string connectionString =
 			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
 			using (SqlConnection connection = new SqlConnection(connectionString))
@@ -163,16 +164,16 @@ namespace EnrollmentSystem
 							c.Section.Capacity = reader.GetInt32(availableSlotIndex);
 						}
 
-						StudAcct.CourseLoad.Add(c);
+						courseLoad.Add(c);
 					}
 				}
-				return StudAcct.CourseLoad;
+				return courseLoad;
 			}
 		}
 
 		public List<Course> GetAllCoursePassed()
 		{
-			List<Course> courseList = new List<Course>();
+			List<Course> coursePassed = new List<Course>();
 			string connectionString =
 			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
 			using (SqlConnection connection = new SqlConnection(connectionString))
@@ -202,10 +203,10 @@ namespace EnrollmentSystem
 						int unitIndex = reader.GetOrdinal(nameof(Course.Unit));
 						c.Unit = reader.GetInt32(unitIndex);
 
-						courseList.Add(c);
+						coursePassed.Add(c);
 					}
 				}
-				return courseList;
+				return coursePassed;
 			}
 		}
 
@@ -219,6 +220,21 @@ namespace EnrollmentSystem
 				command.CommandType = CommandType.StoredProcedure;
 				command.Parameters.Add("StudentId", SqlDbType.Int).Value = StudAcct.StudentId;
 				command.Parameters.Add("CourseId", SqlDbType.Int).Value = courseId;
+				connection.Open();
+				return command.ExecuteNonQuery();
+			}
+		}
+		public int AddSectionToCourseLoad(string courseCode, int sectionId)
+		{
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand("spAddSectionToCourseLoad", connection))
+			{
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("StudId", SqlDbType.Int).Value = StudAcct.StudentId;
+				command.Parameters.Add("CourseCode", SqlDbType.VarChar, 50).Value = courseCode;
+				command.Parameters.Add("SectionId", SqlDbType.Int).Value = sectionId;
 				connection.Open();
 				return command.ExecuteNonQuery();
 			}

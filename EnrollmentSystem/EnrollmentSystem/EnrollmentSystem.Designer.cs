@@ -28,12 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.lv_load = new System.Windows.Forms.ListView();
-			this.colCourseCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.colCourseTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.colUnit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.colSection = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.colRemove = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.btn_removeSection = new System.Windows.Forms.Button();
 			this.btn_removeCourse = new System.Windows.Forms.Button();
@@ -59,63 +53,29 @@
 			this.btn_addSection = new System.Windows.Forms.Button();
 			this.lv_section = new System.Windows.Forms.ListView();
 			this.colSec = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colSecTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colReserveSlots = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colMaxSlots = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.colSecId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.dgv_load = new System.Windows.Forms.DataGridView();
+			this.courseCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.courseTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.remove = new System.Windows.Forms.DataGridViewCheckBoxColumn();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.groupBox4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgv_load)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// lv_load
-			// 
-			this.lv_load.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colCourseCode,
-            this.colCourseTitle,
-            this.colUnit,
-            this.colSection,
-            this.colRemove});
-			this.lv_load.FullRowSelect = true;
-			this.lv_load.GridLines = true;
-			this.lv_load.Location = new System.Drawing.Point(18, 28);
-			this.lv_load.Name = "lv_load";
-			this.lv_load.Size = new System.Drawing.Size(460, 228);
-			this.lv_load.TabIndex = 0;
-			this.lv_load.UseCompatibleStateImageBehavior = false;
-			this.lv_load.View = System.Windows.Forms.View.Details;
-			// 
-			// colCourseCode
-			// 
-			this.colCourseCode.Text = "CourseCode";
-			this.colCourseCode.Width = 75;
-			// 
-			// colCourseTitle
-			// 
-			this.colCourseTitle.Text = "CourseTitle";
-			this.colCourseTitle.Width = 226;
-			// 
-			// colUnit
-			// 
-			this.colUnit.Text = "Unit";
-			this.colUnit.Width = 45;
-			// 
-			// colSection
-			// 
-			this.colSection.Text = "Section";
-			this.colSection.Width = 58;
-			// 
-			// colRemove
-			// 
-			this.colRemove.Text = "Remove";
-			this.colRemove.Width = 98;
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.dgv_load);
 			this.groupBox1.Controls.Add(this.btn_removeSection);
 			this.groupBox1.Controls.Add(this.btn_removeCourse);
-			this.groupBox1.Controls.Add(this.lv_load);
 			this.groupBox1.Location = new System.Drawing.Point(442, 57);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(484, 304);
@@ -287,15 +247,17 @@
 			this.btn_addSection.TabIndex = 5;
 			this.btn_addSection.Text = "Add Section";
 			this.btn_addSection.UseVisualStyleBackColor = true;
+			this.btn_addSection.Click += new System.EventHandler(this.btn_addSection_Click);
 			// 
 			// lv_section
 			// 
 			this.lv_section.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colSec,
-            this.columnHeader1,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7});
+            this.colDay,
+            this.colSecTime,
+            this.colReserveSlots,
+            this.colMaxSlots,
+            this.colSecId});
 			this.lv_section.FullRowSelect = true;
 			this.lv_section.GridLines = true;
 			this.lv_section.Location = new System.Drawing.Point(18, 28);
@@ -309,23 +271,84 @@
 			// 
 			this.colSec.Text = "Section";
 			// 
-			// columnHeader1
+			// colDay
 			// 
-			this.columnHeader1.Text = "Day";
+			this.colDay.Text = "Day";
 			// 
-			// columnHeader5
+			// colSecTime
 			// 
-			this.columnHeader5.Text = "Time";
+			this.colSecTime.Text = "Time";
 			// 
-			// columnHeader6
+			// colReserveSlots
 			// 
-			this.columnHeader6.Text = "ReserveSlots";
-			this.columnHeader6.Width = 84;
+			this.colReserveSlots.Text = "ReserveSlots";
+			this.colReserveSlots.Width = 84;
 			// 
-			// columnHeader7
+			// colMaxSlots
 			// 
-			this.columnHeader7.Text = "MaxSlots";
-			this.columnHeader7.Width = 86;
+			this.colMaxSlots.Text = "MaxSlots";
+			this.colMaxSlots.Width = 86;
+			// 
+			// colSecId
+			// 
+			this.colSecId.Width = 0;
+			// 
+			// dgv_load
+			// 
+			this.dgv_load.AllowUserToAddRows = false;
+			this.dgv_load.AllowUserToDeleteRows = false;
+			this.dgv_load.BackgroundColor = System.Drawing.SystemColors.Window;
+			this.dgv_load.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv_load.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.courseCode,
+            this.courseTitle,
+            this.unit,
+            this.section,
+            this.remove});
+			this.dgv_load.Location = new System.Drawing.Point(6, 28);
+			this.dgv_load.Name = "dgv_load";
+			this.dgv_load.ReadOnly = true;
+			this.dgv_load.RowHeadersVisible = false;
+			this.dgv_load.Size = new System.Drawing.Size(473, 228);
+			this.dgv_load.TabIndex = 6;
+			this.dgv_load.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_load_CellClick);
+			// 
+			// courseCode
+			// 
+			this.courseCode.HeaderText = "CourseCode";
+			this.courseCode.Name = "courseCode";
+			this.courseCode.ReadOnly = true;
+			this.courseCode.Width = 75;
+			// 
+			// courseTitle
+			// 
+			this.courseTitle.HeaderText = "Course Title";
+			this.courseTitle.Name = "courseTitle";
+			this.courseTitle.ReadOnly = true;
+			this.courseTitle.Width = 226;
+			// 
+			// unit
+			// 
+			this.unit.HeaderText = "Unit";
+			this.unit.Name = "unit";
+			this.unit.ReadOnly = true;
+			this.unit.Width = 45;
+			// 
+			// section
+			// 
+			this.section.HeaderText = "Section";
+			this.section.Name = "section";
+			this.section.ReadOnly = true;
+			this.section.Width = 58;
+			// 
+			// remove
+			// 
+			this.remove.HeaderText = "Remove";
+			this.remove.Name = "remove";
+			this.remove.ReadOnly = true;
+			this.remove.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.remove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+			this.remove.Width = 60;
 			// 
 			// EnrollmentSystem
 			// 
@@ -344,19 +367,13 @@
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgv_load)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.ListView lv_load;
-		private System.Windows.Forms.ColumnHeader colCourseCode;
-		private System.Windows.Forms.ColumnHeader colCourseTitle;
-		private System.Windows.Forms.ColumnHeader colUnit;
-		private System.Windows.Forms.ColumnHeader colSection;
-		private System.Windows.Forms.ColumnHeader colRemove;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Button btn_removeSection;
 		private System.Windows.Forms.Button btn_removeCourse;
@@ -382,10 +399,17 @@
 		private System.Windows.Forms.Button btn_addSection;
 		private System.Windows.Forms.ListView lv_section;
 		private System.Windows.Forms.ColumnHeader colSec;
-		private System.Windows.Forms.ColumnHeader columnHeader1;
-		private System.Windows.Forms.ColumnHeader columnHeader5;
-		private System.Windows.Forms.ColumnHeader columnHeader6;
-		private System.Windows.Forms.ColumnHeader columnHeader7;
+		private System.Windows.Forms.ColumnHeader colDay;
+		private System.Windows.Forms.ColumnHeader colSecTime;
+		private System.Windows.Forms.ColumnHeader colReserveSlots;
+		private System.Windows.Forms.ColumnHeader colMaxSlots;
+		private System.Windows.Forms.ColumnHeader colSecId;
+		private System.Windows.Forms.DataGridView dgv_load;
+		private System.Windows.Forms.DataGridViewTextBoxColumn courseCode;
+		private System.Windows.Forms.DataGridViewTextBoxColumn courseTitle;
+		private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+		private System.Windows.Forms.DataGridViewTextBoxColumn section;
+		private System.Windows.Forms.DataGridViewCheckBoxColumn remove;
 	}
 }
 
