@@ -44,7 +44,7 @@ namespace EnrollmentSystem
 				foreach (Course cpass in loggedInAcct.GetAllCoursePassed())
 				{
 					//see if possible course is already passed
-					if(c.CourseId == cpass.CourseId)
+					if (c.CourseId == cpass.CourseId)
 					{
 						pass = true;
 					}
@@ -68,13 +68,13 @@ namespace EnrollmentSystem
 			}
 		}
 
-		public void FillStudentLoadDataGrid() 
+		public void FillStudentLoadDataGrid()
 		{
 			dgv_load.Rows.Clear();
 			dgv_load.Refresh();
 			foreach (Course c in loggedInAcct.GetStudentLoad())
 			{
-				string[] loadInfo = new string[] { c.CourseCode, c.CourseTitle, Convert.ToString(c.Unit), c.Section.SectionName};
+				string[] loadInfo = new string[] { c.CourseCode, c.CourseTitle, Convert.ToString(c.Unit), c.Section.SectionName };
 				dgv_load.Rows.Add(loadInfo);
 			}
 		}
@@ -82,7 +82,7 @@ namespace EnrollmentSystem
 		public void FillSectionListView(string courseCode)
 		{
 			lv_section.Items.Clear();
-			foreach(Section s in Section.GetAllSection(courseCode))
+			foreach (Section s in Section.GetAllSection(courseCode))
 			{
 				string[] sectionInfo = new string[] { s.SectionName, s.Day, s.Time, Convert.ToString(s.AvailableSlot), Convert.ToString(s.Capacity), Convert.ToString(s.SectionId) };
 				ListViewItem section = new ListViewItem(sectionInfo);
@@ -114,7 +114,7 @@ namespace EnrollmentSystem
 		{
 			//clear section list view first
 			lv_section.Items.Clear();
-			
+
 			//view all sections with matching CourseCode
 			if (e.RowIndex >= 0)
 			{
@@ -124,11 +124,12 @@ namespace EnrollmentSystem
 			}
 		}
 
+		//function : add section to course load
 		private void btn_addSection_Click(object sender, EventArgs e)
 		{
-			if (lv_section.SelectedItems.Count != 1)
+			if (dgv_load.SelectedCells.Count != 1)
 			{
-				MessageBox.Show("Select Course", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Select Section", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 			//getting the CourseCode of the selected row in dgv_load
@@ -141,6 +142,56 @@ namespace EnrollmentSystem
 			int sectionId = Convert.ToInt32(item.SubItems[5].Text);
 
 			loggedInAcct.AddSectionToCourseLoad(courseCode, sectionId);
+
+			//refresh tables
+			FillStudentLoadDataGrid();
+			FillCourseListView();
+		}
+
+		//function : remove a course from course load
+		private void btn_removeCourse_Click(object sender, EventArgs e)
+		{
+			if (dgv_load.SelectedRows.Count > 0)
+			{
+				//getting the CourseCode of the selected row in dgv_load
+				int rowIndex = dgv_load.CurrentRow.Index;
+				DataGridViewRow row = this.dgv_load.Rows[rowIndex];
+				string courseCode = row.Cells["CourseCode"].Value.ToString();
+
+				loggedInAcct.DeleteCourseToCourseLoad(courseCode);
+
+				//refresh tables
+				FillStudentLoadDataGrid();
+				FillCourseListView();
+			}
+			else
+			{
+				MessageBox.Show("Select Course", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+		}
+
+		//function : remove section from course load
+		private void btn_removeSection_Click(object sender, EventArgs e)
+		{
+			// get all removed checked boxes and make a delete list
+			List<DataGridViewRow> deleteList = new List<DataGridViewRow>();
+			foreach(DataGridViewRow row in dgv_load.Rows)
+			{
+				bool check = Convert.ToBoolean(row.Cells[4].Value);
+				if(check == true)
+				{
+					deleteList.Add(row);
+				}
+			}
+
+			foreach(DataGridViewRow row in deleteList)
+			{
+				//get Course Code in current column
+				string courseCode = row.Cells["CourseCode"].Value.ToString();
+				//ready to delete section
+				loggedInAcct.DeleteSectionToCourseLoad(courseCode);
+			}
 
 			//refresh tables
 			FillStudentLoadDataGrid();

@@ -224,6 +224,7 @@ namespace EnrollmentSystem
 				return command.ExecuteNonQuery();
 			}
 		}
+
 		public int AddSectionToCourseLoad(string courseCode, int sectionId)
 		{
 			string connectionString =
@@ -235,6 +236,37 @@ namespace EnrollmentSystem
 				command.Parameters.Add("StudId", SqlDbType.Int).Value = StudAcct.StudentId;
 				command.Parameters.Add("CourseCode", SqlDbType.VarChar, 50).Value = courseCode;
 				command.Parameters.Add("SectionId", SqlDbType.Int).Value = sectionId;
+				connection.Open();
+				return command.ExecuteNonQuery();
+			}
+		}
+
+		public int DeleteCourseToCourseLoad(string courseCode)
+		{
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand("spDeleteCourseToCourseLoad", connection))
+			{
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("StudentId", SqlDbType.Int).Value = StudAcct.StudentId;
+				command.Parameters.Add("CourseCode", SqlDbType.VarChar, 50).Value = courseCode;
+				connection.Open();
+				return command.ExecuteNonQuery();
+			}
+		}
+
+
+		public int DeleteSectionToCourseLoad(string courseCode)
+		{
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand("spDeleteSectionToCourseLoad", connection))
+			{
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("StudentId", SqlDbType.Int).Value = StudAcct.StudentId;
+				command.Parameters.Add("CourseCode", SqlDbType.VarChar, 50).Value = courseCode;
 				connection.Open();
 				return command.ExecuteNonQuery();
 			}

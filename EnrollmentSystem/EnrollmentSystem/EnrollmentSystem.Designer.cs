@@ -91,6 +91,7 @@
 			this.btn_removeSection.TabIndex = 5;
 			this.btn_removeSection.Text = "Remove Section";
 			this.btn_removeSection.UseVisualStyleBackColor = true;
+			this.btn_removeSection.Click += new System.EventHandler(this.btn_removeSection_Click);
 			// 
 			// btn_removeCourse
 			// 
@@ -100,6 +101,7 @@
 			this.btn_removeCourse.TabIndex = 4;
 			this.btn_removeCourse.Text = "Remove Course";
 			this.btn_removeCourse.UseVisualStyleBackColor = true;
+			this.btn_removeCourse.Click += new System.EventHandler(this.btn_removeCourse_Click);
 			// 
 			// lbl_studName
 			// 
@@ -297,6 +299,8 @@
 			// 
 			this.dgv_load.AllowUserToAddRows = false;
 			this.dgv_load.AllowUserToDeleteRows = false;
+			this.dgv_load.AllowUserToResizeColumns = false;
+			this.dgv_load.AllowUserToResizeRows = false;
 			this.dgv_load.BackgroundColor = System.Drawing.SystemColors.Window;
 			this.dgv_load.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv_load.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -306,9 +310,11 @@
             this.section,
             this.remove});
 			this.dgv_load.Location = new System.Drawing.Point(6, 28);
+			this.dgv_load.MultiSelect = false;
 			this.dgv_load.Name = "dgv_load";
-			this.dgv_load.ReadOnly = true;
 			this.dgv_load.RowHeadersVisible = false;
+			this.dgv_load.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dgv_load.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
 			this.dgv_load.Size = new System.Drawing.Size(473, 228);
 			this.dgv_load.TabIndex = 6;
 			this.dgv_load.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_load_CellClick);
@@ -317,14 +323,12 @@
 			// 
 			this.courseCode.HeaderText = "CourseCode";
 			this.courseCode.Name = "courseCode";
-			this.courseCode.ReadOnly = true;
 			this.courseCode.Width = 75;
 			// 
 			// courseTitle
 			// 
 			this.courseTitle.HeaderText = "Course Title";
 			this.courseTitle.Name = "courseTitle";
-			this.courseTitle.ReadOnly = true;
 			this.courseTitle.Width = 226;
 			// 
 			// unit
@@ -345,7 +349,6 @@
 			// 
 			this.remove.HeaderText = "Remove";
 			this.remove.Name = "remove";
-			this.remove.ReadOnly = true;
 			this.remove.Resizable = System.Windows.Forms.DataGridViewTriState.True;
 			this.remove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			this.remove.Width = 60;
