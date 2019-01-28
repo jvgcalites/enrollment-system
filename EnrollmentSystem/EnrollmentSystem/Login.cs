@@ -67,6 +67,7 @@ namespace EnrollmentSystem
 				textBox_email.ResetText();
 				textBox_password.ResetText();
 				this.Hide();
+				ui_main.FormClosing += FormClosing_MainWindow;
 				ui_main.Show();
 			}
 			else
@@ -75,6 +76,11 @@ namespace EnrollmentSystem
 				textBox_password.Focus();
 				textBox_password.SelectAll();
 			}
+		}
+
+		private void FormClosing_MainWindow(object sender, FormClosingEventArgs e)
+		{
+			this.Show();
 		}
 	}
 }

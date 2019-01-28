@@ -77,6 +77,7 @@
             this.colUnit,
             this.colSection,
             this.colRemove});
+			this.lv_load.FullRowSelect = true;
 			this.lv_load.GridLines = true;
 			this.lv_load.Location = new System.Drawing.Point(18, 28);
 			this.lv_load.Name = "lv_load";
@@ -168,6 +169,7 @@
 			this.btn_addCourse.TabIndex = 5;
 			this.btn_addCourse.Text = "Add Course";
 			this.btn_addCourse.UseVisualStyleBackColor = true;
+			this.btn_addCourse.Click += new System.EventHandler(this.btn_addCourse_Click);
 			// 
 			// lv_course
 			// 
@@ -176,6 +178,7 @@
             this.col_CourseTitle,
             this.col_Unit,
             this.col_CourseId});
+			this.lv_course.FullRowSelect = true;
 			this.lv_course.GridLines = true;
 			this.lv_course.Location = new System.Drawing.Point(18, 28);
 			this.lv_course.Name = "lv_course";
@@ -293,6 +296,7 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
+			this.lv_section.FullRowSelect = true;
 			this.lv_section.GridLines = true;
 			this.lv_section.Location = new System.Drawing.Point(18, 28);
 			this.lv_section.Name = "lv_section";

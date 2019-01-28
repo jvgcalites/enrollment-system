@@ -130,7 +130,10 @@ namespace EnrollmentSystem
 
 						//Get SectionName
 						int sectionNameIndex = reader.GetOrdinal(nameof(Section.SectionName));
-						c.Section.SectionName = reader.GetString(sectionNameIndex);
+						if (!reader.IsDBNull(sectionNameIndex))
+						{
+							c.Section.SectionName = reader.GetString(sectionNameIndex);
+						}
 
 						//Get Time
 						int timeIndex = reader.GetOrdinal(nameof(Section.Time));
@@ -165,8 +168,60 @@ namespace EnrollmentSystem
 				}
 				return StudAcct.CourseLoad;
 			}
+		}
 
+		public List<Course> GetAllCoursePassed()
+		{
+			List<Course> courseList = new List<Course>();
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand("spGetAllCoursePassed", connection))
+			{
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("StudentId", SqlDbType.Int).Value = StudAcct.StudentId;
+				connection.Open();
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						Course c = new Course();
+						//Get CourseId
+						int CourseIdIndex = reader.GetOrdinal(nameof(Course.CourseId));
+						c.CourseId = reader.GetInt32(CourseIdIndex);
 
+						//Get CourseTitle
+						int CourseNameIndex = reader.GetOrdinal(nameof(Course.CourseTitle));
+						c.CourseTitle = reader.GetString(CourseNameIndex);
+
+						//Get CourseCode
+						int courseCodeIndex = reader.GetOrdinal(nameof(Course.CourseCode));
+						c.CourseCode = reader.GetString(courseCodeIndex);
+
+						//Get Units
+						int unitIndex = reader.GetOrdinal(nameof(Course.Unit));
+						c.Unit = reader.GetInt32(unitIndex);
+
+						courseList.Add(c);
+					}
+				}
+				return courseList;
+			}
+		}
+
+		public int AddCourseLoad(int courseId)
+		{
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand("spInsertCourse", connection))
+			{
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("StudentId", SqlDbType.Int).Value = StudAcct.StudentId;
+				command.Parameters.Add("CourseId", SqlDbType.Int).Value = courseId;
+				connection.Open();
+				return command.ExecuteNonQuery();
+			}
 		}
 	}
 }

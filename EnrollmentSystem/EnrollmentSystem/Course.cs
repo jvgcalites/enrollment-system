@@ -98,5 +98,43 @@ namespace EnrollmentSystem
 			}
 		}
 		#endregion
+
+		public static List<Course> GetAllCourseWithNoPreReq()
+		{
+			List<Course> courseList = new List<Course>();
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand("spGetAllCourseWithNoPreReq", connection))
+			{
+				command.CommandType = CommandType.StoredProcedure;
+				connection.Open();
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						Course c = new Course();
+						//Get CourseId
+						int CourseIdIndex = reader.GetOrdinal(nameof(Course.CourseId));
+						c.CourseId = reader.GetInt32(CourseIdIndex);
+
+						//Get CourseTitle
+						int CourseNameIndex = reader.GetOrdinal(nameof(Course.CourseTitle));
+						c.CourseTitle = reader.GetString(CourseNameIndex);
+
+						//Get CourseCode
+						int courseCodeIndex = reader.GetOrdinal(nameof(Course.CourseCode));
+						c.CourseCode = reader.GetString(courseCodeIndex);
+
+						//Get Units
+						int unitIndex = reader.GetOrdinal(nameof(Course.Unit));
+						c.Unit = reader.GetInt32(unitIndex);
+
+						courseList.Add(c);
+					}
+				}
+				return courseList;
+			}
+		}
 	}
 }
