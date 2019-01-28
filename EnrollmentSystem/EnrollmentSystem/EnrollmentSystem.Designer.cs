@@ -59,11 +59,13 @@
 			this.colMaxSlots = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.colSecId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.dgv_load = new System.Windows.Forms.DataGridView();
-			this.courseCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.courseTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.lbl_totalUnits = new System.Windows.Forms.Label();
+			this.btn_logOut = new System.Windows.Forms.Button();
 			this.remove = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+			this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.courseTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.courseCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -73,6 +75,7 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.lbl_totalUnits);
 			this.groupBox1.Controls.Add(this.dgv_load);
 			this.groupBox1.Controls.Add(this.btn_removeSection);
 			this.groupBox1.Controls.Add(this.btn_removeCourse);
@@ -85,7 +88,7 @@
 			// 
 			// btn_removeSection
 			// 
-			this.btn_removeSection.Location = new System.Drawing.Point(370, 263);
+			this.btn_removeSection.Location = new System.Drawing.Point(368, 262);
 			this.btn_removeSection.Name = "btn_removeSection";
 			this.btn_removeSection.Size = new System.Drawing.Size(99, 23);
 			this.btn_removeSection.TabIndex = 5;
@@ -243,7 +246,7 @@
 			// 
 			// btn_addSection
 			// 
-			this.btn_addSection.Location = new System.Drawing.Point(18, 262);
+			this.btn_addSection.Location = new System.Drawing.Point(29, 262);
 			this.btn_addSection.Name = "btn_addSection";
 			this.btn_addSection.Size = new System.Drawing.Size(75, 23);
 			this.btn_addSection.TabIndex = 5;
@@ -289,7 +292,6 @@
 			// colMaxSlots
 			// 
 			this.colMaxSlots.Text = "MaxSlots";
-			this.colMaxSlots.Width = 86;
 			// 
 			// colSecId
 			// 
@@ -315,35 +317,28 @@
 			this.dgv_load.RowHeadersVisible = false;
 			this.dgv_load.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 			this.dgv_load.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-			this.dgv_load.Size = new System.Drawing.Size(473, 228);
+			this.dgv_load.Size = new System.Drawing.Size(472, 228);
 			this.dgv_load.TabIndex = 6;
 			this.dgv_load.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_load_CellClick);
 			// 
-			// courseCode
+			// lbl_totalUnits
 			// 
-			this.courseCode.HeaderText = "CourseCode";
-			this.courseCode.Name = "courseCode";
-			this.courseCode.Width = 75;
+			this.lbl_totalUnits.AutoSize = true;
+			this.lbl_totalUnits.Location = new System.Drawing.Point(136, 267);
+			this.lbl_totalUnits.Name = "lbl_totalUnits";
+			this.lbl_totalUnits.Size = new System.Drawing.Size(64, 13);
+			this.lbl_totalUnits.TabIndex = 7;
+			this.lbl_totalUnits.Text = "Total Units: ";
 			// 
-			// courseTitle
+			// btn_logOut
 			// 
-			this.courseTitle.HeaderText = "Course Title";
-			this.courseTitle.Name = "courseTitle";
-			this.courseTitle.Width = 226;
-			// 
-			// unit
-			// 
-			this.unit.HeaderText = "Unit";
-			this.unit.Name = "unit";
-			this.unit.ReadOnly = true;
-			this.unit.Width = 45;
-			// 
-			// section
-			// 
-			this.section.HeaderText = "Section";
-			this.section.Name = "section";
-			this.section.ReadOnly = true;
-			this.section.Width = 58;
+			this.btn_logOut.Location = new System.Drawing.Point(856, 9);
+			this.btn_logOut.Name = "btn_logOut";
+			this.btn_logOut.Size = new System.Drawing.Size(75, 23);
+			this.btn_logOut.TabIndex = 8;
+			this.btn_logOut.Text = "Log Out";
+			this.btn_logOut.UseVisualStyleBackColor = true;
+			this.btn_logOut.Click += new System.EventHandler(this.btn_logOut_Click);
 			// 
 			// remove
 			// 
@@ -353,20 +348,49 @@
 			this.remove.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			this.remove.Width = 60;
 			// 
+			// section
+			// 
+			this.section.HeaderText = "Section";
+			this.section.Name = "section";
+			this.section.ReadOnly = true;
+			this.section.Width = 58;
+			// 
+			// unit
+			// 
+			this.unit.HeaderText = "Unit";
+			this.unit.Name = "unit";
+			this.unit.ReadOnly = true;
+			this.unit.Width = 45;
+			// 
+			// courseTitle
+			// 
+			this.courseTitle.HeaderText = "Course Title";
+			this.courseTitle.Name = "courseTitle";
+			this.courseTitle.Width = 226;
+			// 
+			// courseCode
+			// 
+			this.courseCode.HeaderText = "CourseCode";
+			this.courseCode.Name = "courseCode";
+			this.courseCode.Width = 75;
+			// 
 			// EnrollmentSystem
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(943, 682);
+			this.Controls.Add(this.btn_logOut);
 			this.Controls.Add(this.groupBox4);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.lbl_studName);
 			this.Controls.Add(this.groupBox1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "EnrollmentSystem";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "EnrollmentSystem";
 			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
@@ -408,6 +432,8 @@
 		private System.Windows.Forms.ColumnHeader colMaxSlots;
 		private System.Windows.Forms.ColumnHeader colSecId;
 		private System.Windows.Forms.DataGridView dgv_load;
+		private System.Windows.Forms.Label lbl_totalUnits;
+		private System.Windows.Forms.Button btn_logOut;
 		private System.Windows.Forms.DataGridViewTextBoxColumn courseCode;
 		private System.Windows.Forms.DataGridViewTextBoxColumn courseTitle;
 		private System.Windows.Forms.DataGridViewTextBoxColumn unit;

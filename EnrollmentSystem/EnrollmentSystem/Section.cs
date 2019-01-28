@@ -17,15 +17,6 @@ namespace EnrollmentSystem
 		public int Capacity { get; set; }
 		public int AvailableSlot { get; set; }
 
-		/// <summary>
-		/// Get Section informations
-		/// </summary>
-		/// <returns></returns>
-		//public Section GetSection()
-		//{
-			
-		//}
-
 		public static List<Section> GetAllSection(string courseCode)
 		{
 			List<Section> sectionList = new List<Section>();

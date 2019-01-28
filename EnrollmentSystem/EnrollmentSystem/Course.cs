@@ -16,19 +16,44 @@ namespace EnrollmentSystem
 		public int Unit { get; set; }
 		public Section Section { get; set; }
 
-		/// <summary>
-		/// Returns All Information of the course
-		/// </summary>
-		/// <returns></returns>
-		/// 
-
 		public Course()
 		{
 			Section = new Section();
 		}
-		public Course GetCourseInfo()
+		public static Course GetCourseInfo(int courseId)
 		{
-			throw new System.NotImplementedException();
+			Course c = new Course();
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			using (SqlCommand command = new SqlCommand("spGetCourseInfo", connection))
+			{
+				command.CommandType = CommandType.StoredProcedure;
+				command.Parameters.Add("CourseId", SqlDbType.Int).Value = courseId;
+				connection.Open();
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						//Get CourseId
+						int CourseIdIndex = reader.GetOrdinal(nameof(Course.CourseId));
+						c.CourseId = reader.GetInt32(CourseIdIndex);
+
+						//Get CourseTitle
+						int CourseNameIndex = reader.GetOrdinal(nameof(Course.CourseTitle));
+						c.CourseTitle = reader.GetString(CourseNameIndex);
+
+						//Get CourseCode
+						int courseCodeIndex = reader.GetOrdinal(nameof(Course.CourseCode));
+						c.CourseCode = reader.GetString(courseCodeIndex);
+
+						//Get Units
+						int unitIndex = reader.GetOrdinal(nameof(Course.Unit));
+						c.Unit = reader.GetInt32(unitIndex);
+					}
+				}
+				return c;
+			}
 		}
 		/// <summary>
 		/// Add new section to the course

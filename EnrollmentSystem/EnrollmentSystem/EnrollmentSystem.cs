@@ -30,6 +30,7 @@ namespace EnrollmentSystem
 
 			//Welcome message
 			lbl_studName.Text = $"WELCOME {loggedInAcct.StudAcct.FirstName} {loggedInAcct.StudAcct.MiddleName} {loggedInAcct.StudAcct.LastName}";
+			lbl_totalUnits.Text = $"Total Units : {Convert.ToString(computeTotalUnits())}";
 		}
 
 		public void FillCourseListView()
@@ -98,15 +99,69 @@ namespace EnrollmentSystem
 				MessageBox.Show("Select Course", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
+
 			//Get CourseId from the lv_course
 			ListViewItem item = lv_course.SelectedItems[0];
 			int courseId = Convert.ToInt32(item.SubItems[3].Text);
 
-			loggedInAcct.AddCourseLoad(courseId);
+			//Get the unit of the selected course
+			Course select = new Course();
+			select = Course.GetCourseInfo(courseId);
+
+			//check if adding the course will exceed the max load limit = 18
+			if (surpassMaxLoad(select.Unit))
+			{
+				MessageBox.Show($"Sorry, adding {select.CourseCode} will exceed max load units", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			else
+			{
+				//add it to course load 
+				loggedInAcct.AddCourseLoad(courseId);
+			}
 
 			//refresh tables
 			FillStudentLoadDataGrid();
 			FillCourseListView();
+
+			//refresh totalUnits
+			lbl_totalUnits.Text = $"Total Units : {Convert.ToString(computeTotalUnits())}";
+
+		}
+
+		//function : check if adding course will exceed max load units
+		public bool surpassMaxLoad(int selectedCourseUnit)
+		{
+			bool exceed;
+			int totalUnits = 0;
+			const int MAXUNITS = 18;
+
+			//compute units of courses currently in student load
+			totalUnits = computeTotalUnits();
+
+			//add the unit of the course that is supposed to be added
+			totalUnits += selectedCourseUnit;
+
+			//check if total units surpass max units
+			if(totalUnits > MAXUNITS)
+			{
+				exceed = true;
+			}
+			else
+			{
+				exceed = false;
+			}
+			return exceed;
+		}
+
+		//function : Compute for total load units
+		public int computeTotalUnits()
+		{
+			int totalUnits = 0; 
+			foreach (Course c in loggedInAcct.GetStudentLoad())
+			{
+				totalUnits += c.Unit;
+			}
+			return totalUnits;
 		}
 
 		//function: : shows available section of a course in load
@@ -151,7 +206,7 @@ namespace EnrollmentSystem
 		//function : remove a course from course load
 		private void btn_removeCourse_Click(object sender, EventArgs e)
 		{
-			if (dgv_load.SelectedRows.Count > 0)
+			if (dgv_load.SelectedCells.Count > 0)
 			{
 				//getting the CourseCode of the selected row in dgv_load
 				int rowIndex = dgv_load.CurrentRow.Index;
@@ -163,6 +218,9 @@ namespace EnrollmentSystem
 				//refresh tables
 				FillStudentLoadDataGrid();
 				FillCourseListView();
+
+				//refresh totalUnits
+				lbl_totalUnits.Text = $"Total Units : {Convert.ToString(computeTotalUnits())}";
 			}
 			else
 			{
@@ -196,6 +254,16 @@ namespace EnrollmentSystem
 			//refresh tables
 			FillStudentLoadDataGrid();
 			FillCourseListView();
+		}
+
+		private void btn_logOut_Click(object sender, EventArgs e)
+		{
+			//prompt user for confirmation
+			DialogResult confirmation = MessageBox.Show("Do you want to log out?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+			if (confirmation == DialogResult.Yes)
+			{
+				this.Close();
+			}
 		}
 	}
 }
