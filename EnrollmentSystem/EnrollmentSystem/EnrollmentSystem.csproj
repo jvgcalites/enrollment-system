@@ -48,12 +48,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="ConfirmLogout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmLogout.Designer.cs">
+      <DependentUpon>ConfirmLogout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Course.cs" />
     <Compile Include="EnrollmentSystem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EnrollmentSystem.Designer.cs">
       <DependentUpon>EnrollmentSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorLogin.Designer.cs">
+      <DependentUpon>ErrorLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -64,9 +76,33 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Section.cs" />
+    <Compile Include="SelectCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectCourse.Designer.cs">
+      <DependentUpon>SelectCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectSection.Designer.cs">
+      <DependentUpon>SelectSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs" />
+    <Compile Include="SuccessfulLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuccessfulLogin.Designer.cs">
+      <DependentUpon>SuccessfulLogin.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ConfirmLogout.resx">
+      <DependentUpon>ConfirmLogout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EnrollmentSystem.resx">
       <DependentUpon>EnrollmentSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorLogin.resx">
+      <DependentUpon>ErrorLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -79,7 +115,17 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectCourse.resx">
+      <DependentUpon>SelectCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectSection.resx">
+      <DependentUpon>SelectSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuccessfulLogin.resx">
+      <DependentUpon>SuccessfulLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -92,7 +138,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Photos\BG1.jpg" />
+    <None Include="Photos\questionSymbol.png" />
+    <None Include="Photos\Icon.png" />
+    <None Include="Photos\checkSymbol.png" />
+    <Content Include="Photos\errorSymbol.png" />
+    <Content Include="Photos\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

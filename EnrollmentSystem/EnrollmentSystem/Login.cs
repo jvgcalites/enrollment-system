@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace EnrollmentSystem
 {
@@ -45,37 +47,49 @@ namespace EnrollmentSystem
 
 		private void button_login_Click(object sender, EventArgs e)
 		{
-			Account studAccount = new Account();
-			string email = textBox_email.Text.Trim();
-			string passWord = textBox_password.Text.Trim();
+            if (textBox_email.Text == "" || textBox_password.Text == "")
+            {
+                ErrorLogin errorLogin = new ErrorLogin();
+                errorLogin.ShowDialog();
+            }
 
-			//Check first if input is valid
-			//if (!ValidateInput(email, passWord))
-			//{
-			//	return;
-			//}
+            else
+            {
+                Account studAccount = new Account();
+                string email = textBox_email.Text.Trim();
+                string passWord = textBox_password.Text.Trim();
 
-			if (studAccount.VerifyAccount("mllanderson@mymail.mapua.edu.ph", "2.0071e+009"))
-			{
-				//get user account
-				var loggedInStud = studAccount.GetStudentInfo();
 
-				MessageBox.Show("Login success!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (studAccount.VerifyAccount(textBox_email.Text, textBox_password.Text))
+                {
 
-				//Instantiate the MainMenu
-				EnrollmentSystem ui_main = new EnrollmentSystem(loggedInStud);
-				textBox_email.ResetText();
-				textBox_password.ResetText();
-				this.Hide();
-				ui_main.FormClosing += FormClosing_MainWindow;
-				ui_main.Show();
-			}
-			else
-			{
-				MessageBox.Show("Incorrect email or password entered.", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				textBox_password.Focus();
-				textBox_password.SelectAll();
-			}
+                    //get user account
+                    var loggedInStud = studAccount.GetStudentInfo();
+
+
+                    SuccessfulLogin successful = new SuccessfulLogin();
+                    successful.ShowDialog();
+
+                    this.Hide();
+
+                    
+
+                    //Instantiate the MainMenu
+                    EnrollmentSystem ui_main = new EnrollmentSystem(loggedInStud);
+                    textBox_email.ResetText();
+                    textBox_password.ResetText();
+
+                    ui_main.FormClosing += FormClosing_MainWindow;
+                    ui_main.Show();
+
+
+                }
+                else
+                {
+                    ErrorLogin errorLogin = new ErrorLogin();
+                    errorLogin.ShowDialog();
+                }
+            }
 		}
 
 		private void FormClosing_MainWindow(object sender, FormClosingEventArgs e)

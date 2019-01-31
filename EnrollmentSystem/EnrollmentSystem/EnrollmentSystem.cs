@@ -29,7 +29,7 @@ namespace EnrollmentSystem
 			FillStudentLoadDataGrid();
 
 			//Welcome message
-			lbl_studName.Text = $"WELCOME {loggedInAcct.StudAcct.FirstName} {loggedInAcct.StudAcct.MiddleName} {loggedInAcct.StudAcct.LastName}";
+			lbl_studName.Text = $"WELCOME,  {loggedInAcct.StudAcct.FirstName} {loggedInAcct.StudAcct.MiddleName} {loggedInAcct.StudAcct.LastName}";
 			lbl_totalUnits.Text = $"Total Units : {Convert.ToString(computeTotalUnits())}";
 		}
 
@@ -96,7 +96,8 @@ namespace EnrollmentSystem
 		{
 			if (lv_course.SelectedItems.Count != 1)
 			{
-				MessageBox.Show("Select Course", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SelectCourse selectCourse = new SelectCourse();
+                selectCourse.ShowDialog();
 				return;
 			}
 
@@ -184,7 +185,8 @@ namespace EnrollmentSystem
 		{
 			if (dgv_load.SelectedCells.Count != 1)
 			{
-				MessageBox.Show("Select Section", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SelectSection selectSection = new SelectSection();
+                selectSection.ShowDialog();
 				return;
 			}
 			//getting the CourseCode of the selected row in dgv_load
@@ -224,7 +226,8 @@ namespace EnrollmentSystem
 			}
 			else
 			{
-				MessageBox.Show("Select Course", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SelectCourse selectCourse = new SelectCourse();
+                selectCourse.ShowDialog();
 				return;
 			}
 		}
@@ -258,12 +261,24 @@ namespace EnrollmentSystem
 
 		private void btn_logOut_Click(object sender, EventArgs e)
 		{
-			//prompt user for confirmation
-			DialogResult confirmation = MessageBox.Show("Do you want to log out?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-			if (confirmation == DialogResult.Yes)
-			{
-				this.Close();
-			}
+
+
+            ConfirmLogout confirm = new ConfirmLogout();
+            confirm.ShowDialog();
+
+            if (confirm.DialogResult == DialogResult.Yes)
+                this.Close();
+           
+                
+
+            
+   //         //prompt user for confirmation
+			//DialogResult confirmation = MessageBox.Show("Do you want to log out?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+			//if (confirmation == DialogResult.Yes)
+			//{
+			//	this.Close();
+			//}
 		}
-	}
+
+    }
 }
