@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="GUI\AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ConfirmLogout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="GUI\SuccessfulLogin.Designer.cs">
       <DependentUpon>SuccessfulLogin.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ConfirmLogout.resx">
       <DependentUpon>ConfirmLogout.cs</DependentUpon>
     </EmbeddedResource>

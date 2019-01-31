@@ -21,8 +21,11 @@ namespace EnrollmentSystem
 
 		private void button_login_Click(object sender, EventArgs e)
 		{
+			string email = textBox_email.Text;
+			string passWord = textBox_password.Text;
+
 			//if textbox is empty
-            if (textBox_email.Text == "" || textBox_password.Text == "")
+			if (email == "" || passWord == "")
             {
                 ErrorLogin errorLogin = new ErrorLogin();
                 errorLogin.ShowDialog();
@@ -30,8 +33,6 @@ namespace EnrollmentSystem
             else
             {
                 Account studAccount = new Account();
-                string email = textBox_email.Text;
-                string passWord = textBox_password.Text;
 
                 if (studAccount.VerifyAccount(email, passWord))
                 {
@@ -51,7 +52,18 @@ namespace EnrollmentSystem
                     ui_main.FormClosing += FormClosing_MainWindow;
                     ui_main.Show();
                 }
-                else
+				else if (AdminAccount(email))
+				{
+					AdminForm adminAcc = new AdminForm();
+					textBox_email.ResetText();
+					textBox_password.ResetText();
+					MessageBox.Show("Login success!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					this.Hide();
+					adminAcc.FormClosing += FormClosing_MainWindow;
+					adminAcc.Show();
+
+				}
+				else
                 {
 					//show error login
                     ErrorLogin errorLogin = new ErrorLogin();
@@ -63,6 +75,35 @@ namespace EnrollmentSystem
 		private void FormClosing_MainWindow(object sender, FormClosingEventArgs e)
 		{
 			this.Show();
+		}
+
+
+		public bool AdminAccount(string adminEmail)
+		{
+			string connectionString =
+			ConfigurationManager.ConnectionStrings["EnrollmentDB"]?.ConnectionString;
+			SqlConnection connection = new SqlConnection(connectionString);
+			SqlDataAdapter adapter = new SqlDataAdapter("getPWAdmin", connection);
+			adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+			adapter.SelectCommand.Parameters.AddWithValue("@emailAdmin", adminEmail);
+			DataTable pass = new DataTable();
+			adapter.Fill(pass);
+			connection.Close();
+
+			if (pass.Rows.Count > 0)
+			{
+				if ((string)pass.Rows[0][0] == textBox_password.Text)
+				{
+
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+				return false;
 		}
 	}
 }
