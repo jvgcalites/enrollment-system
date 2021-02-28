@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EnrollmentSystem
 {
-	class Account
+	public class Account
 	{
 		public Student StudAcct { get; set; }
 

@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="EnrollmentSystem.Section">
-    <Position X="6.75" Y="1.25" Width="1.75" />
+    <Position X="7.75" Y="1.25" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAIACACAAAAAAAAAACAAAAAAAAAAAAAAAQAQA=</HashCode>
+      <HashCode>CAAAAAAAIAAACAAAAAAAAAACAAAAAAAAAAAAAAAQQQA=</HashCode>
       <FileName>Section.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EnrollmentSystem.Course">
-    <Position X="4.25" Y="1.25" Width="2" />
+    <Position X="3.75" Y="1.25" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAIAAAgAAAIQAAAAAAAAAAQAgAAAAAAIAAAAA=</HashCode>
+      <HashCode>AAAEAAAAIAAAgAAAIQAAAAAAAgAAQAgCAAAAAIAAAAA=</HashCode>
       <FileName>Course.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EnrollmentSystem.Student">
-    <Position X="1.5" Y="1.25" Width="2.25" />
+    <Position X="0.5" Y="1.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAUAAACAAAIAIACBQAAAAAAAAAAAGAAAAAEACAAg=</HashCode>
+      <HashCode>AAAAAUAAACAAAAAAAABQAAAAAAAAAAACAAAAAAADAAg=</HashCode>
       <FileName>Student.cs</FileName>
     </TypeIdentifier>
   </Class>

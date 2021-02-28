@@ -37,7 +37,7 @@ namespace EnrollmentSystem
 		{
 			lv_course.Items.Clear();
 			//get all possible course to take
-			foreach (Course c in Course.GetAllCourseWithNoPreReq())
+			foreach (Course c in DataAccess.GetAllCourseWithNoPreReq())
 			{
 				//we don't know if the course is passed or not
 				bool pass = false;
@@ -83,7 +83,7 @@ namespace EnrollmentSystem
 		public void FillSectionListView(string courseCode)
 		{
 			lv_section.Items.Clear();
-			foreach (Section s in Section.GetAllSection(courseCode))
+			foreach (Section s in DataAccess.GetAllSection(courseCode))
 			{
 				string[] sectionInfo = new string[] { s.SectionName, s.Day, s.Time, Convert.ToString(s.AvailableSlot), Convert.ToString(s.Capacity), Convert.ToString(s.SectionId) };
 				ListViewItem section = new ListViewItem(sectionInfo);
@@ -106,7 +106,7 @@ namespace EnrollmentSystem
 
 			//Get the unit of the selected course
 			Course select = new Course();
-			select = Course.GetCourseInfo(courseId);
+			select = DataAccess.GetCourseInfo(courseId);
 
 			//check if adding the course will exceed the max load limit = 18
 			if (surpassMaxLoad(select.Unit))

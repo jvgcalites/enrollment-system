@@ -18,3 +18,14 @@ C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSy
 C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.exe
 C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.pdb
 C:\Users\calites\Documents\GitHub\EnrollmentSystem\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.Login.resources
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\bin\Debug\EnrollmentSystem.exe.config
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\bin\Debug\EnrollmentSystem.exe
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\bin\Debug\EnrollmentSystem.pdb
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csprojAssemblyReference.cache
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.EnrollmentSystem.resources
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.Login.resources
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.Properties.Resources.resources
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csproj.GenerateResource.cache
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.csproj.CoreCompileInputs.cache
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.exe
+C:\Users\jvgcalites\Documents\GitHub\enrollment-system\EnrollmentSystem\EnrollmentSystem\obj\Debug\EnrollmentSystem.pdb
